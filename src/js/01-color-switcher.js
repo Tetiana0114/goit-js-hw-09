@@ -29,5 +29,3 @@ function onStopBtnClick(attr, value) {
     refs.stopBtn.setAttribute(attr, value);
     refs.startBtn.removeAttribute(attr);
 }
-
-
