@@ -44,14 +44,21 @@ function addLeadingZero(value) {
 }
 
 function convertMs(ms) {
+  // Number of milliseconds per unit of time
   const second = 1000;
   const minute = second * 60;
   const hour = minute * 60;
   const day = hour * 24;
-  const days = addLeadingZero(Math.floor(ms / day));
-  const hours = addLeadingZero(Math.floor((ms % day) / hour));
-  const minutes = addLeadingZero(Math.floor(((ms % day) % hour) / minute));
-  const seconds = addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
+
+  // Remaining days
+  const days =  addLeadingZero(Math.floor(ms / day));
+  // Remaining hours
+  const hours =  addLeadingZero(Math.floor((ms % day) / hour));
+  // Remaining minutes
+  const minutes =  addLeadingZero(Math.floor(((ms % day) % hour) / minute));
+  // Remaining seconds
+  const seconds =  addLeadingZero(Math.floor((((ms % day) % hour) % minute) / second));
+
   return { days, hours, minutes, seconds };
 }
 
@@ -62,8 +69,8 @@ function startTimer() {
     updateTimerInterface(convertMs(deltaTime));
     if (deltaTime < DELAY) {
       clearInterval(timer);
-      Notify.success('Timer is finished!');
-      // alert('Timer is finished!')
+      Notify.success('Timer finished!');
+      // alert('Timer finished!')
     }
   }, DELAY);
 }
