@@ -13,19 +13,15 @@ refs.startBtn.addEventListener("click", () => {
     timerId = setInterval(() => {
   document.body.style.backgroundColor = getRandomHexColor();
     }, 1000);
-    onStartBtnClick('disabled', true);
+    onBtnClick(refs.startBtn, refs.stopBtn, 'disabled', true);
 });
 
 refs.stopBtn.addEventListener("click", () => {
     clearInterval(timerId);
-    onStopBtnClick('disabled', true);
+    onBtnClick(refs.stopBtn, refs.startBtn, 'disabled', true);
 });
 
-function onStartBtnClick(attr, value) {
-    refs.startBtn.setAttribute(attr, value);
-    refs.stopBtn.removeAttribute(attr);
-}
-function onStopBtnClick(attr, value) {
-    refs.stopBtn.setAttribute(attr, value);
-    refs.startBtn.removeAttribute(attr);
-}
+function onBtnClick(firstBtn, secondBtn, attr, value) {
+    firstBtn.setAttribute(attr, value);
+    secondBtn.removeAttribute(attr);
+    }
